@@ -10,7 +10,7 @@ on:
       - v3.*
   pull_request:
     branches:
-    - '3.0'
+      - '3.0'
 
   # Allow running this workflow manually from the Actions tab
   workflow_dispatch:
@@ -38,5 +38,5 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle
       - name: Build with Gradle
         run: |
-          echo "Running build for commit $GITHUB_SHA"
+          echo "Running build for commit ${{ github.sha }} in ${{ github.head_ref }}"
           ./gradlew build -x javadoc
